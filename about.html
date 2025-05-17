@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - VisitAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-content {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .about-content h2 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .about-content ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .about-content li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin: 40px 0 20px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+        
+        .team-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+        
+        .team-member .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 40px;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .team-member p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            min-width: 300px;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        
+        .mission h2, .vision h2 {
+            margin-top: 0;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            right: -10px;
+            z-index: 1;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item.right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .timeline-item.right::after {
+                left: 21px;
+            }
+            
+            .mission-vision {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo" data-component-name="<div />">
+                <img src="assets/logoVisitai.png" alt="VisitAI Logo" data-component-name="<img />" class="larger-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#languages">Languages</a></li>
+                <li><a href="index.html#download">Download</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="about-content">
+        <h1>About VisitAI</h1>
+        
+        <p>VisitAI was born from a simple idea: what if your smartphone could tell you the stories behind the buildings and landmarks you encounter while traveling? Founded in 2023, our team of passionate travelers, history enthusiasts, and AI experts came together to create an app that transforms how people explore and learn about the world around them.</p>
+        
+        <div class="mission-vision">
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>To make cultural and historical knowledge accessible to everyone, anywhere, breaking down language barriers and enhancing the travel experience through the power of artificial intelligence.</p>
+            </div>
+            <div class="vision">
+                <h2>Our Vision</h2>
+                <p>A world where every traveler can deeply connect with the places they visit, understanding their significance and stories regardless of language or prior knowledge.</p>
+            </div>
+        </div>
+        
+        <h2>Our Story</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2023</h3>
+                    <p>The idea for VisitAI was conceived during a backpacking trip through Europe when our founder, Elena, found herself wishing for a better way to learn about the historical buildings she was encountering.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Early 2024</h3>
+                    <p>Development began with a small team of four people working from a tiny office in Bucharest. The first prototype could recognize just 50 famous landmarks.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>Mid 2024</h3>
+                    <p>VisitAI secured its first round of funding, allowing the team to expand and improve the AI's recognition capabilities to over 10,000 buildings worldwide.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Late 2024</h3>
+                    <p>Multilingual support was added, starting with just three languages and expanding to the current eight languages.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>VisitAI launched globally, quickly gaining popularity among travelers, educators, and history enthusiasts. The app now recognizes over 100,000 landmarks across 50 countries.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Our Team</h2>
+        <p>VisitAI is powered by a diverse team of experts passionate about travel, history, and technology. We've brought together talents from various fields to create an app that's both technically impressive and genuinely useful.</p>
+        
+        <div class="team-section">
+            <div class="team-member">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Elena Popescu</h3>
+                <p>Founder & CEO</p>
+                <p>Former travel guide with a passion for making history accessible to everyone.</p>
+            </div>
+            <div class="team-member">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Marco Rossi</h3>
+                <p>CTO</p>
+                <p>AI specialist with expertise in computer vision and natural language processing.</p>
+            </div>
+            <div class="team-member">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Sarah Chen</h3>
+                <p>Head of Content</p>
+                <p>Historian with a PhD in European Architecture and a knack for storytelling.</p>
+            </div>
+            <div class="team-member">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>David Kim</h3>
+                <p>Lead Developer</p>
+                <p>Mobile app wizard who ensures VisitAI runs smoothly across all devices.</p>
+            </div>
+        </div>
+        
+        <h2>Our Technology</h2>
+        <p>VisitAI leverages cutting-edge AI technologies to deliver accurate information about buildings and landmarks:</p>
+        <ul>
+            <li><strong>Advanced Computer Vision:</strong> Our proprietary image recognition system can identify buildings from various angles and in different lighting conditions.</li>
+            <li><strong>Natural Language Processing:</strong> We generate natural-sounding descriptions that are informative yet concise.</li>
+            <li><strong>High-Quality Text-to-Speech:</strong> Our app converts text to speech in multiple languages with natural-sounding voices.</li>
+            <li><strong>Location Intelligence:</strong> We use your location data (with permission) to narrow down possible matches and provide more accurate results.</li>
+        </ul>
+        
+        <h2>Our Commitment</h2>
+        <p>At VisitAI, we're committed to:</p>
+        <ul>
+            <li><strong>Accuracy:</strong> We work with historians and local experts to ensure the information we provide is accurate and culturally sensitive.</li>
+            <li><strong>Accessibility:</strong> We believe everyone should have access to knowledge about our shared cultural heritage.</li>
+            <li><strong>Privacy:</strong> We respect your data privacy and only collect information necessary to provide our services.</li>
+            <li><strong>Continuous Improvement:</strong> We're constantly expanding our database and improving our AI to recognize more buildings and provide better information.</li>
+        </ul>
+        
+        <h2>Join Us on This Journey</h2>
+        <p>We're just getting started on our mission to transform how people explore and learn about the world. Whether you're a casual traveler, a history buff, or an educator, we invite you to download VisitAI and experience a new way of discovering the stories behind the buildings around you.</p>
+        
+        <p>Have suggestions for improving VisitAI? We'd love to hear from you! Contact us at <a href="mailto:feedback@visitai.com">feedback@visitai.com</a>.</p>
+        
+        <a href="index.html" class="back-to-home">← Back to Home</a>
+    </div>
+
+    <footer>
+        <div class="footer-content" data-component-name="<div />">
+            <div class="footer-logo">
+                <img src="assets/logoVisitai.png" alt="VisitAI Logo" class="larger-logo">
+            </div>
+            <div class="footer-links" data-component-name="<div />">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul data-component-name="<ul />">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VisitAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
