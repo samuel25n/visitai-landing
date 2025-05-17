@@ -1,0 +1,63 @@
+Privacy Policy
+Last Updated: March 26, 2025
+
+Thank you for using our app. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services.
+
+By using our app, you agree to the collection and use of your information in accordance with this policy.
+
+1. Information We Collect
+Camera Data:
+We request access to your camera to allow you to take pictures of buildings or historical landmarks. These images are sent to an AI service (powered by OpenAI) for analysis. After the image is processed, it is deleted from our servers.
+
+Location Data:
+We use your location to enhance the AI’s analysis by determining where you are when sending the image. Your location is used temporarily and not saved after the analysis is completed.
+
+Account Information:
+To create an account, we collect your email address and your name. This information is used to manage your account and allow you to access past data, including images and analyses.
+
+Password:
+Your password is stored securely in Firebase using bcrypt hashing to ensure it is protected.
+
+2. How We Use Your Information
+Camera and Location Data: We use your camera to take pictures of buildings or historical sites and your location to improve the AI analysis. These are used temporarily and are not stored after processing.
+
+Account Information: Your email and name are used to create and manage your account. This allows you to access your past data.
+
+Third-Party Services: We use OpenAI for AI-powered analysis of the images and Firebase for storing your account data securely.
+
+3. Data Retention
+We retain your account information (email, name, and password) for the purpose of managing your account.
+
+Images are deleted after they are processed by the AI.
+
+Location data is only used temporarily and is not stored after the analysis.
+
+4. Your Rights
+You have the right to:
+
+Access your personal data.
+
+Request correction of any incorrect information.
+
+Delete your account and all associated data. To do this, please contact us at [Contact Email] or follow the instructions in the app.
+
+5. Data Security
+We take the security of your data seriously. Your password is stored using bcrypt hashing to ensure it is kept safe. We also use SSL encryption to protect your data during transmission.
+
+6. Third-Party Services
+OpenAI: We use OpenAI to analyze the images you submit. OpenAI’s privacy practices are governed by their own privacy policy. You can review it here: [OpenAI Privacy Policy Link].
+
+Firebase: Firebase is used to store your account data securely. Firebase’s privacy policy can be reviewed here: [Firebase Privacy Policy Link].
+
+7. User Consent
+By using our app, you consent to the collection and use of your data as described in this Privacy Policy.
+
+8. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. When we do, we will post the revised policy on this page with an updated "Last Updated" date. Please review this Privacy Policy periodically to stay informed about how we protect your information.
+
+9. Contact Us
+If you have any questions or concerns about this Privacy Policy, please contact us at:
+Elsamo watch SRL
+support@visitai.com
+
+Let me know if you need any changes or additional sections. Once you're happy with this, we can proceed with the Terms of Service.
