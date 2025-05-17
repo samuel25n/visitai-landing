@@ -172,35 +172,21 @@ footer {
 }
 
 .phone-container {
-    background-color: #fff !important;
-    border-radius: 40px !important;
-    padding: 10px !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
-    max-width: 320px !important;
+    max-width: 500px !important;
     position: relative !important;
     overflow: hidden !important;
-    border: 8px solid #1a365d !important;
-}
-
-.phone-container::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 150px !important;
-    height: 20px !important;
-    background-color: #1a365d !important;
-    border-bottom-left-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-    z-index: 3 !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
 }
 
 .phone-container img {
     width: 100% !important;
     height: auto !important;
     display: block !important;
-    border-radius: 30px !important;
+    border-radius: 0 !important;
+    object-fit: contain !important;
 }
 
 /* Center all footer content elements */
