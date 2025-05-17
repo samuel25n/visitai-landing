@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - VisitAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="additional-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-content {
+            max-width: 900px;
+            margin: 120px auto 50px;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .contact-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-info {
+            padding-right: 20px;
+        }
+        
+        .contact-info h2 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin: 0 0 20px;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .contact-details h3 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details p {
+            margin: 0;
+            color: var(--light-text);
+        }
+        
+        .contact-form h2 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin: 0 0 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: inline-block;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .back-to-home {
+            display: block;
+            text-align: center;
+            margin: 40px 0 20px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .back-to-home:hover {
+            text-decoration: underline;
+        }
+        
+        .faq-section {
+            margin-top: 60px;
+        }
+        
+        .faq-section h2 {
+            color: var(--primary-dark);
+            font-size: 1.5rem;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo" data-component-name="<div />">
+                <img src="assets/logoVisitai.png" alt="VisitAI Logo" data-component-name="<img />" class="larger-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#how-it-works">How It Works</a></li>
+                <li><a href="index.html#languages">Languages</a></li>
+                <li><a href="index.html#download">Download</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="contact-content">
+        <h1>Contact Us</h1>
+        
+        <p>Have questions about VisitAI? Want to share your experience or suggest improvements? We'd love to hear from you! Fill out the form below or use one of our contact methods to get in touch.</p>
+        
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email Us</h3>
+                        <p>support@visitai.eu</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Our Location</h3>
+                        <p>Remote-first company</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Response Time</h3>
+                        <p>We aim to respond within 24-48 hours</p>
+                    </div>
+                </div>
+                
+                <h2>Connect With Us</h2>
+                <p>Follow our journey as we continue to develop and improve VisitAI:</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/samuel-nistor" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                
+                <div class="success-message" id="success-message">
+                    Your message has been sent successfully! We'll get back to you soon.
+                </div>
+                
+                <div class="error-message" id="error-message">
+                    There was an error sending your message. Please try again later.
+                </div>
+                
+                <form id="contact-form" action="https://formspree.io/f/xzzrooyl" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" selected disabled>Select a subject</option>
+                            <option value="General Inquiry">General Inquiry</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="Business Inquiry">Business Inquiry</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">How accurate is VisitAI's building recognition?</div>
+                <div class="faq-answer">
+                    <p>VisitAI uses advanced AI technology to recognize buildings and landmarks. The accuracy depends on various factors including lighting conditions, angle, and whether the building is in our database. We continuously train our AI to improve recognition accuracy, and our system gets better with each update.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Does VisitAI work offline?</div>
+                <div class="faq-answer">
+                    <p>VisitAI requires an internet connection to analyze images and provide information about buildings. This is because the image recognition and information retrieval processes happen on our servers. However, once information is loaded, you can save it for offline viewing later.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">How do I suggest a building to be added to the database?</div>
+                <div class="faq-answer">
+                    <p>We welcome suggestions for new buildings to add to our database! Simply use the contact form on this page and select "Feature Request" as the subject. Include as much information as possible about the building, including its name, location, and historical significance.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure when using VisitAI?</div>
+                <div class="faq-answer">
+                    <p>Yes, we take data security very seriously. Images you upload are processed for recognition and then deleted from our servers. We don't store your location data after it's used for analysis. For more details, please review our <a href="privacy.html">Privacy Policy</a>.</p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-to-home">← Back to Home</a>
+    </div>
+
+    <footer>
+        <div class="footer-content" data-component-name="<div />">
+            <div class="footer-logo">
+                <img src="assets/logoVisitai.png" alt="VisitAI Logo" class="larger-logo">
+            </div>
+            <div class="footer-links" data-component-name="<div />">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul data-component-name="<ul />">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VisitAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Toggle active class on question
+                question.classList.toggle('active');
+                
+                // Toggle active class on answer
+                answer.classList.toggle('active');
+            });
+        });
+        
+        // Form submission handling with Formspree
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            // We don't need to prevent default as we want the form to submit to Formspree
+            // But we'll show a success message when returning from Formspree
+            
+            // Check if there's a success parameter in the URL (when returning from Formspree)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('contact-form').reset();
+                // Scroll to the success message
+                document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>
