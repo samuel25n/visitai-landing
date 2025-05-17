@@ -1,0 +1,227 @@
+/* Add these styles to your existing styles.css file */
+
+/* Add position relative to body for the wave background */
+body {
+    position: relative;
+}
+
+/* Add a subtle wave pattern to the background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.184 20c.357-.13.72-.264.888-.14 1.652-1.1 2.782.14 3.68.14 1.074 0 2.14-.156 3.204-.156 1.23 0 2.46.15 3.68.15 1.068 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.068 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.074-.15 3.205-.15 1.06 0 2.12.15 3.18.15 1.07 0 2.073-.15 3.204-.15 1.18 0 2.35.15 3.28.15 0-5.01 0-10.02 0-15.03-1.08-.14-2.16-.28-3.24-.28-1.07 0-2.13.14-3.2.14-1.07 0-2.13-.14-3.2-.14-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28-1.08 0-2.16-.28-3.24-.28-1.08 0-2.16.28-3.24.28z' fill='%234ecdc4' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+/* Transparent header and navigation */
+header {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+nav {
+    background: transparent !important;
+}
+
+/* Improve nav text visibility */
+.nav-links a {
+    color: white !important;
+    font-weight: 600 !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.nav-links a:hover {
+    color: #FFE66D !important; /* Using accent color for hover */
+}
+
+/* Adjust hamburger menu for visibility */
+.hamburger .line {
+    background-color: white !important;
+}
+
+/* Add floating animation to feature cards */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.feature-card:hover {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Add gradient borders to sections */
+.features, .how-it-works, .testimonials {
+    position: relative;
+    overflow: hidden;
+}
+
+.features::before, .how-it-works::before, .testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--primary-color) 100%);
+}
+
+/* Add subtle gradient to the download buttons */
+.app-button {
+    background: linear-gradient(135deg, #333 0%, #000 100%);
+    transition: all 0.3s ease;
+}
+
+.app-button:hover {
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+}
+
+/* Add a subtle glow effect to the primary buttons */
+.primary {
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+.primary:hover {
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.5);
+}
+
+/* Enhanced footer with gradient */
+footer {
+    background: linear-gradient(135deg, #333 0%, #222 100%);
+}
+
+/* Add a subtle wave decoration to the bottom of sections */
+.hero::after, .features::after, .how-it-works::after, .languages::after, .testimonials::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%234ECDC4'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%234ECDC4'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%234ECDC4' opacity='.25'/%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+/* Make sections position relative for the wave decoration */
+.hero, .features, .how-it-works, .languages, .testimonials {
+    position: relative;
+}
+
+/* Larger logo style */
+.larger-logo {
+    height: 60px !important;
+    margin-right: 0 !important;
+}
+
+/* Adjust footer logo size */
+.footer-logo .larger-logo {
+    height: 60px !important;
+}
+
+/* Smaller image style */
+.smaller-image {
+    max-width: 70% !important;
+    height: auto;
+}
+
+/* Center language grid */
+.language-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+}
+
+/* Adjust testimonial author styling (no images) */
+.testimonial-author {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.testimonial-author div {
+    text-align: center;
+}
+
+/* Fix hero image background issue */
+.hero {
+    background: linear-gradient(135deg, #7FDFD9 0%, #4ECDC4 50%, #2E9E97 100%) !important;
+}
+
+.hero-image {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.phone-container {
+    background-color: #fff !important;
+    border-radius: 40px !important;
+    padding: 10px !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+    max-width: 320px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border: 8px solid #1a365d !important;
+}
+
+.phone-container::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 150px !important;
+    height: 20px !important;
+    background-color: #1a365d !important;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    z-index: 3 !important;
+}
+
+.phone-container img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    border-radius: 30px !important;
+}
+
+/* Center all footer content elements */
+.footer-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.footer-links {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 4rem !important;
+}
+
+.footer-column {
+    text-align: center !important;
+}
+
+.footer-logo {
+    margin-bottom: 2rem !important;
+    justify-content: center !important;
+}
