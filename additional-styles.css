@@ -17,30 +17,10 @@ body::before {
     z-index: -1;
 }
 
-/* Transparent header and navigation */
+/* Enhanced header with backdrop filter for a frosted glass effect */
 header {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-nav {
-    background: transparent !important;
-}
-
-/* Improve nav text visibility */
-.nav-links a {
-    color: white !important;
-    font-weight: 600 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
-}
-
-.nav-links a:hover {
-    color: #FFE66D !important; /* Using accent color for hover */
-}
-
-/* Adjust hamburger menu for visibility */
-.hamburger .line {
-    background-color: white !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* Add floating animation to feature cards */
@@ -172,21 +152,35 @@ footer {
 }
 
 .phone-container {
-    max-width: 500px !important;
+    background-color: #fff !important;
+    border-radius: 40px !important;
+    padding: 10px !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+    max-width: 320px !important;
     position: relative !important;
     overflow: hidden !important;
-    border: none !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 auto !important;
+    border: 8px solid #1a365d !important;
+}
+
+.phone-container::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 150px !important;
+    height: 20px !important;
+    background-color: #1a365d !important;
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    z-index: 3 !important;
 }
 
 .phone-container img {
     width: 100% !important;
     height: auto !important;
     display: block !important;
-    border-radius: 0 !important;
-    object-fit: contain !important;
+    border-radius: 30px !important;
 }
 
 /* Center all footer content elements */
