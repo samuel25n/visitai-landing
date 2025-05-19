@@ -1,15 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Get header element
-    const header = document.querySelector('header');
+    // Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     
-    // Add scroll event to make header solid on scroll
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 20) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking a nav link
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
     });
     
     // Testimonial Slider
@@ -84,10 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Check initial scroll position on page load
-    if (window.scrollY > 20) {
-        header.classList.add('scrolled');
-    }
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = 'none';
+        }
+    });
     
     // Reveal animations on scroll
     const revealElements = document.querySelectorAll('.feature-card, .step, .language-item');
