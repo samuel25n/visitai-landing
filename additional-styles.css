@@ -143,6 +143,29 @@ footer {
     background: linear-gradient(135deg, #7FDFD9 0%, #4ECDC4 50%, #2E9E97 100%) !important;
 }
 
+/* Remove ALL background elements and patterns */
+.hero::before,
+.hero::after,
+body::before,
+body::after,
+.hero-bg-shape,
+.shape-1,
+.shape-2,
+.shape-3 {
+    display: none !important;
+}
+
+/* Clean hero section styling */
+.hero {
+    background: linear-gradient(135deg, #7FDFD9 0%, #4ECDC4 50%, #2E9E97 100%) !important;
+    overflow: visible !important;
+}
+
+/* Remove any lingering circular elements */
+.hero > *:not(.hero-content):not(.hero-image):not(.icons-container) {
+    display: none !important;
+}
+
 .hero-image {
     display: flex !important;
     justify-content: center !important;
