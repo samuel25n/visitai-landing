@@ -1,23 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    // Get header element
     const header = document.querySelector('header');
+    const navLinks = document.querySelector('.nav-links');
     
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        header.classList.toggle('menu-active');
-    });
-    
-    // Close mobile menu when clicking a nav link
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            header.classList.remove('menu-active');
-        });
+    // Add scroll event to make header solid on scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
     
     // Testimonial Slider
@@ -92,15 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else if (!navLinks.classList.contains('active')) {
-            // Only remove box shadow if mobile menu is not active
-            header.style.boxShadow = 'none';
-        }
-    });
+    // Check initial scroll position on page load
+    if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+    }
     
     // Reveal animations on scroll
     const revealElements = document.querySelectorAll('.feature-card, .step, .language-item');
