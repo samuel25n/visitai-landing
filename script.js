@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('header');
     
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
+        header.classList.toggle('menu-active');
     });
     
     // Close mobile menu when clicking a nav link
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         item.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
+            header.classList.remove('menu-active');
         });
     });
     
@@ -90,11 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Header scroll effect
-    const header = document.querySelector('header');
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
+        } else if (!navLinks.classList.contains('active')) {
+            // Only remove box shadow if mobile menu is not active
             header.style.boxShadow = 'none';
         }
     });
