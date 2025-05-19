@@ -159,11 +159,23 @@ body::after,
 .hero {
     background: linear-gradient(135deg, #7FDFD9 0%, #4ECDC4 50%, #2E9E97 100%) !important;
     overflow: visible !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
-/* Remove any lingering circular elements */
+/* Remove any lingering circular elements but keep our important elements */
 .hero > *:not(.hero-content):not(.hero-image):not(.icons-container) {
     display: none !important;
+}
+
+/* Ensure icons container is properly displayed */
+.icons-container {
+    display: block !important;
+    position: relative !important;
+    flex: 0 0 20% !important;
+    height: 100% !important;
+    min-height: 400px !important;
 }
 
 .hero-image {
