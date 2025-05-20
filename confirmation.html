@@ -169,42 +169,31 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Parse the query string
-            const parsed = queryString.parse(location.search);
+            const urlParams = new URLSearchParams(window.location.search);
+            const confirmationUrl = urlParams.get('confirmation_url');
             
             // Check if we have a confirmation URL parameter
-            if (parsed.confirmation_url) {
-                // If we have a confirmation URL, we're in the email flow
-                const confirmationUrl = decodeURIComponent(parsed.confirmation_url);
-                
+            if (confirmationUrl) {
                 // Show appropriate message for email confirmation
                 document.getElementById('confirmation-title').textContent = 'Email Confirmation Link Clicked!';
                 
                 const messageDiv = document.getElementById('confirmation-message');
                 messageDiv.innerHTML = `
-                    <p>We're verifying your email confirmation. This will just take a moment...</p>
+                    <p>We're verifying your email. This will just take a moment...</p>
                     <div class="loader"></div>
                 `;
                 
-                // Hide the download button and show the continue button
+                // Hide the download button initially
                 document.getElementById('download-button').style.display = 'none';
                 
-                // Redirect to the confirmation URL after a short delay
-                setTimeout(() => {
-                    // Sanitize the redirect URL to prevent open redirects
-                    try {
-                        const url = new URL(confirmationUrl);
-                        // Only allow redirects to our own domain
-                        if (url.hostname === window.location.hostname || 
-                            url.hostname.endsWith('.visitai.eu')) {
-                            window.location.href = confirmationUrl;
-                            return;
-                        }
-                    } catch (e) {
-                        console.error('Invalid confirmation URL:', e);
-                    }
-                    
-                    // If we get here, either the URL was invalid or not allowed
-                    // Show the default success message
+                // Create a hidden iframe to handle the confirmation
+                const iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                document.body.appendChild(iframe);
+                
+                // Load the confirmation URL in the iframe
+                iframe.onload = function() {
+                    // After the iframe loads, show success message
                     messageDiv.innerHTML = `
                         <p>Your email has been successfully confirmed!</p>
                         <p>You can now return to the VisitAI app and log in with your credentials.</p>
@@ -215,7 +204,14 @@
                     continueButton.href = 'https://app.visitai.eu';
                     continueButton.style.display = 'inline-flex';
                     
-                }, 1500);
+                    // Remove the iframe after processing
+                    setTimeout(() => {
+                        document.body.removeChild(iframe);
+                    }, 1000);
+                };
+                
+                // Set the iframe source to the confirmation URL
+                iframe.src = decodeURIComponent(confirmationUrl);
             }
         });
     </script>
