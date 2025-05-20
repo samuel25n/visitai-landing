@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Confirmed - VisitAI</title>
+    <script src="https://unpkg.com/query-string@7.1.1/dist/query-string.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="additional-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -118,15 +119,19 @@
         <div class="confirmation-icon">
             <i class="fas fa-check-circle"></i>
         </div>
-        <h1>Email Successfully Confirmed!</h1>
+        <h1 id="confirmation-title">Email Successfully Confirmed!</h1>
         
-        <p>Thank you for confirming your email address. Your account has been successfully verified and is now ready to use.</p>
-        
-        <p>You can now return to the VisitAI app and log in with your credentials to start exploring the world with our AI-powered travel companion.</p>
+        <div id="confirmation-message">
+            <p>Thank you for confirming your email address. Your account has been successfully verified and is now ready to use.</p>
+            <p>You can now return to the VisitAI app and log in with your credentials to start exploring the world with our AI-powered travel companion.</p>
+        </div>
         
         <div class="action-buttons">
-            <a href="index.html#download" class="action-button">
+            <a href="index.html#download" class="action-button" id="download-button">
                 <i class="fas fa-download"></i> Download App
+            </a>
+            <a href="#" class="action-button" id="continue-button" style="display: none;">
+                <i class="fas fa-arrow-right"></i> Continue to App
             </a>
         </div>
         
@@ -161,5 +166,74 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Parse the query string
+            const parsed = queryString.parse(location.search);
+            
+            // Check if we have a confirmation URL parameter
+            if (parsed.confirmation_url) {
+                // If we have a confirmation URL, we're in the email flow
+                const confirmationUrl = decodeURIComponent(parsed.confirmation_url);
+                
+                // Show appropriate message for email confirmation
+                document.getElementById('confirmation-title').textContent = 'Email Confirmation Link Clicked!';
+                
+                const messageDiv = document.getElementById('confirmation-message');
+                messageDiv.innerHTML = `
+                    <p>We're verifying your email confirmation. This will just take a moment...</p>
+                    <div class="loader"></div>
+                `;
+                
+                // Hide the download button and show the continue button
+                document.getElementById('download-button').style.display = 'none';
+                
+                // Redirect to the confirmation URL after a short delay
+                setTimeout(() => {
+                    // Sanitize the redirect URL to prevent open redirects
+                    try {
+                        const url = new URL(confirmationUrl);
+                        // Only allow redirects to our own domain
+                        if (url.hostname === window.location.hostname || 
+                            url.hostname.endsWith('.visitai.eu')) {
+                            window.location.href = confirmationUrl;
+                            return;
+                        }
+                    } catch (e) {
+                        console.error('Invalid confirmation URL:', e);
+                    }
+                    
+                    // If we get here, either the URL was invalid or not allowed
+                    // Show the default success message
+                    messageDiv.innerHTML = `
+                        <p>Your email has been successfully confirmed!</p>
+                        <p>You can now return to the VisitAI app and log in with your credentials.</p>
+                    `;
+                    
+                    // Show the continue button
+                    const continueButton = document.getElementById('continue-button');
+                    continueButton.href = 'https://app.visitai.eu';
+                    continueButton.style.display = 'inline-flex';
+                    
+                }, 1500);
+            }
+        });
+    </script>
+    <style>
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </body>
 </html>
