@@ -28,11 +28,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
+                // Only consider it "out of view" when it's completely invisible
                 if (!entry.isIntersecting && entry.intersectionRatio === 0) {
-                    wasOutOfView = true;
+                    // Add a small delay to prevent immediate triggering on small scrolls
+                    setTimeout(() => {
+                        if (!entry.isIntersecting) {
+                            wasOutOfView = true;
+                        }
+                    }, 500);
                 }
 
-                if (entry.isIntersecting && wasOutOfView) {
+                // Only restart when coming back into view AND was previously completely out
+                if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
                     heroVideo.currentTime = 0;
                     heroVideo.play();
                     wasOutOfView = false;
@@ -40,7 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         },
         {
-            threshold: [0, 0.5, 1.0],
+            threshold: [0, 0.1, 0.5, 1.0],
+            rootMargin: '-50px 0px -50px 0px'
         }
     );
 
