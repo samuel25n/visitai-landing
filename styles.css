@@ -2,12 +2,14 @@
     --primary-color: #4ECDC4; /* Caribbean sea light blue */
     --primary-dark: #2E9E97; /* Darker shade of primary */
     --primary-light: #7FDFD9; /* Lighter shade of primary */
+    --primary-ultra-light: #B8F0ED; /* Ultra light teal */
     --secondary-color: #FF6B6B;
     --accent-color: #FFE66D;
-    --text-color: #333333;
-    --light-text: #777777;
+    --text-color: #1a202c; /* Darker, more modern */
+    --light-text: #64748b; /* Cooler gray */
     --background-color: #FFFFFF;
-    --light-background: #F9F9F9;
+    --light-background: #f8fafc; /* Cooler light background */
+    --dark-background: #0f172a; /* Dark navy for contrast sections */
     --border-radius: 8px;
     --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease;
@@ -754,7 +756,7 @@ nav {
 
 /* Features Section */
 .features {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    background: linear-gradient(135deg, var(--light-background) 0%, var(--primary-ultra-light) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -777,12 +779,23 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.features-description {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--light-text);
+    text-align: center;
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -851,7 +864,7 @@ nav {
 
 /* How It Works Section */
 .how-it-works {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, var(--dark-background) 0%, var(--primary-dark) 100%);
     color: white;
     position: relative;
     overflow: hidden;
@@ -998,7 +1011,7 @@ nav {
 
 /* Languages Section */
 .languages {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
     text-align: center;
     color: white;
     position: relative;
@@ -1093,7 +1106,7 @@ nav {
 .testimonials {
     text-align: center;
     padding: 6rem 1rem;
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    background: linear-gradient(135deg, var(--light-background) 0%, rgba(184, 240, 237, 0.3) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1105,16 +1118,16 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path d="M30,30m-20,0a20,20 0 1,1 40,0a20,20 0 1,1 -40,0" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>') repeat;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path d="M30,30m-20,0a20,20 0 1,1 40,0a20,20 0 1,1 -40,0" fill="none" stroke="rgba(78,205,196,0.1)" stroke-width="1"/></svg>') repeat;
     background-size: 60px 60px;
 }
 
 .testimonials h2 {
     position: relative;
     z-index: 2;
-    color: #8b4513;
+    color: var(--text-color);
     margin-bottom: 4rem;
-    background: linear-gradient(135deg, #8b4513, #d2691e);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1166,7 +1179,7 @@ nav {
 .testimonial-content p {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #444;
+    color: var(--text-color);
     font-weight: 400;
 }
 
@@ -1192,14 +1205,14 @@ nav {
 
 .testimonial-author h4 {
     margin-bottom: 0.3rem;
-    color: #333;
+    color: var(--text-color);
     font-size: 1.1rem;
 }
 
 .testimonial-author p {
     margin-bottom: 0;
     font-size: 0.95rem;
-    color: #666;
+    color: var(--light-text);
 }
 
 .slider-controls {
@@ -1244,7 +1257,7 @@ nav {
 /* Download Section */
 .download {
     text-align: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark-background) 100%);
     color: white;
     position: relative;
     overflow: hidden;
@@ -1257,8 +1270,8 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 70% 30%, rgba(78, 205, 196, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
 }
 
 .download h2, .download p {
@@ -1444,6 +1457,11 @@ footer {
         font-size: 2rem;
     }
     
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
     .hero {
         flex-direction: column;
         text-align: center;
@@ -1533,6 +1551,18 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .features-description {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+    
     header {
         height: auto;
         background: none !important;
