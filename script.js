@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!heroVideo || !heroSection) return;
 
     function switchVideoSource() {
-        const isMobile = window.innerWidth <= 768;
+        const isMobile = window.innerWidth < window.innerHeight;
         const desktopSource = document.getElementById("video-desktop");
         const mobileSource = document.getElementById("video-mobile");
         
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                const isMobile = window.innerWidth <= 768;
+                const isMobile = window.innerWidth < window.innerHeight;
                 if (isMobile) {
                     return;
                 }
