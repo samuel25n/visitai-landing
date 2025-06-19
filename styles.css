@@ -192,18 +192,29 @@ nav {
     color: #333; /* Slightly darker gray on hover */
     background: none;
     transform: none;
+    transition: all 0.3s ease;
 }
 
 .hamburger {
     display: none;
     cursor: pointer;
+    padding: 12px 10px;
+    background-color: transparent;
+    border: none;
+    z-index: 1001;
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
 .hamburger .line {
-    width: 25px;
-    height: 2px;
-    background-color: #666; /* Gray color */
-    margin: 5px;
+    width: 28px;
+    height: 3px;
+    background-color: #000;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
 }
 
 /* Mobile menu styles */
@@ -251,7 +262,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;
     object-position: center;
     opacity: 0.8;
@@ -268,7 +279,7 @@ nav {
     color: white;
     text-align: center;
     padding: 0 20px;
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+    background: transparent; /* Removed dark overlay */
 }
 
 .video-hero-content h2 {
@@ -1232,6 +1243,27 @@ footer {
         width: 100%;
     }
     
+    /* Responsive video scaling */
+    .video-container {
+        transform: scale(1.2);
+        transform-origin: center;
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
     .logo img, .larger-logo {
         height: 35px !important;
     }
@@ -1262,7 +1294,17 @@ footer {
     }
     
     .hamburger {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 12px;
+        border-radius: 6px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     
     .hamburger.active .line:nth-child(1) {
