@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - VisitAI</title>
+    <title>About VisitAI - AI Travel Guide App Company | Our Story & Mission</title>
+    <meta name="description" content="Learn about VisitAI, the innovative company behind the AI-powered travel guide app. Discover our mission to revolutionize tourism through artificial intelligence and computer vision technology.">
+    <meta name="keywords" content="VisitAI company, about AI travel app, travel technology company, AI tourism innovation, smart travel solutions, travel app development">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://visitai.app/about.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="About VisitAI - AI Travel Guide App Company">
+    <meta property="og:description" content="Discover the story behind VisitAI, the innovative AI-powered travel guide app revolutionizing how travelers explore historical landmarks worldwide.">
+    <meta property="og:url" content="https://visitai.app/about.html">
+    <meta property="og:image" content="https://visitai.app/assets/logoVisitai.png">
+    
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="styles.css">
@@ -13,145 +24,205 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .about-content {
-            max-width: 900px;
-            margin: 80px auto 50px;
-            padding: 40px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-content h1 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        .about-hero {
+            background: linear-gradient(135deg, #4ECDC4 0%, #2E9E97 100%);
+            padding: 100px 0 80px;
             text-align: center;
-        }
-        
-        .about-content h2 {
-            color: var(--primary-dark);
-            font-size: 1.5rem;
-            margin: 30px 0 15px;
-        }
-        
-        .about-content p {
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .about-content ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-        
-        .about-content li {
-            margin-bottom: 10px;
-            line-height: 1.7;
-        }
-        
-        .back-to-home {
-            display: block;
-            text-align: center;
-            margin: 40px 0 20px;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        
-        .back-to-home:hover {
-            text-decoration: underline;
-        }
-        
-        .team-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .team-member {
-            text-align: center;
-            width: 200px;
-        }
-        
-        .team-member .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: var(--primary-light);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 15px;
             color: white;
-            font-size: 40px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .team-member h3 {
-            margin-bottom: 5px;
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(184, 240, 237, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(126, 223, 217, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 1s ease-out;
+        }
+        
+        .about-hero .subtitle {
             font-size: 1.2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 1s ease-out 0.3s both;
         }
         
-        .team-member p {
-            color: var(--light-text);
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            margin: 80px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+        
+        .section:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+        
+        .section h2 {
+            color: #1a202c;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #4ECDC4, #2E9E97);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #64748b;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
         }
         
         .mission-vision {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 30px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px 0;
         }
         
-        .mission, .vision {
-            flex: 1;
-            min-width: 300px;
-            padding: 25px;
-            border-radius: 10px;
-            background-color: #f9f9f9;
+        .mission-card, .vision-card {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(184, 240, 237, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
         
-        .mission h2, .vision h2 {
-            margin-top: 0;
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(78, 205, 196, 0.1), transparent);
+            transform: rotate(-45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        
+        .mission-card:hover::before, .vision-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+        
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
+        }
+        
+        .mission-card h3, .vision-card h3 {
+            color: #2E9E97;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mission-card p, .vision-card p {
+            color: #64748b;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
         
         .timeline {
             position: relative;
-            max-width: 800px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px 0;
         }
         
         .timeline::after {
             content: '';
             position: absolute;
-            width: 6px;
-            background-color: var(--primary-light);
+            width: 4px;
+            background: linear-gradient(180deg, #4ECDC4, #2E9E97);
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -3px;
-            border-radius: 3px;
+            margin-left: -2px;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
         }
         
         .timeline-item {
-            padding: 10px 40px;
+            padding: 10px 50px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
+            opacity: 0;
+            animation: slideInTimeline 0.8s ease-out forwards;
         }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.9s; }
         
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #4ECDC4, #2E9E97);
+            border: 4px solid white;
             border-radius: 50%;
-            top: 15px;
-            right: -10px;
-            z-index: 1;
+            top: 25px;
+            right: -12px;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+            box-shadow: 0 0 25px rgba(78, 205, 196, 0.8);
         }
         
         .timeline-item.left {
@@ -163,24 +234,373 @@
         }
         
         .timeline-item.right::after {
-            left: -10px;
+            left: -12px;
         }
         
         .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(78, 205, 196, 0.1);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
         }
         
         .timeline-content h3 {
-            margin-top: 0;
-            color: var(--primary-color);
+            color: #2E9E97;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .team-section {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+        }
+        
+        .team-member {
+            text-align: center;
+            max-width: 350px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(184, 240, 237, 0.05) 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.1), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .team-member:hover::before {
+            left: 100%;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+        }
+        
+        .team-member .avatar {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 25px;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4ECDC4;
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover .avatar {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(78, 205, 196, 0.5);
+        }
+        
+        .team-member .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .team-member h3 {
+            color: #1a202c;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-member .role {
+            color: #2E9E97;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-member .description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-member .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4ECDC4;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .team-member .social-link:hover {
+            color: #2E9E97;
+            transform: translateY(-2px);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .tech-item {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(184, 240, 237, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #4ECDC4, #2E9E97, #4ECDC4);
+            border-radius: 15px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .tech-item:hover::before {
+            opacity: 0.3;
+            animation: borderGlow 2s linear infinite;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(78, 205, 196, 0.2);
+        }
+        
+        .tech-item h4 {
+            color: #2E9E97;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .tech-item p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+        
+        .commitment-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #4ECDC4;
+            transition: all 0.3s ease;
+        }
+        
+        .commitment-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.2);
+        }
+        
+        .commitment-item h4 {
+            color: #2E9E97;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .commitment-item p {
+            color: #64748b;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #2E9E97 0%, #4ECDC4 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section h2::after {
+            background: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .back-to-home {
+            display: inline-block;
+            background: white;
+            color: #2E9E97;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-to-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: #f8f9fa;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInTimeline {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-item.right {
+            animation: slideInTimelineRight 0.8s ease-out forwards;
+        }
+        
+        @keyframes slideInTimelineRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(-45deg);
+            }
+            100% {
+                transform: translateX(200%) rotate(-45deg);
+            }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
         
         @media screen and (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
             .timeline::after {
-                left: 31px;
+                left: 30px;
             }
             
             .timeline-item {
@@ -194,15 +614,20 @@
             }
             
             .timeline-item::after {
-                left: 21px;
+                left: 18px;
             }
             
             .timeline-item.right::after {
-                left: 21px;
+                left: 18px;
             }
             
-            .mission-vision {
-                flex-direction: column;
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .tech-grid,
+            .commitment-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -229,98 +654,148 @@
         </nav>
     </header>
 
-    <div class="about-content">
+    <div class="about-hero">
         <h1>About VisitAI</h1>
-        
-        <p>VisitAI was born from a simple idea: what if your smartphone could tell you the stories behind the buildings and landmarks you encounter while traveling? The concept came to life in summer 2025 after a vacation in Rome, when our founder didn't know anything about the historical buildings he was seeing and realized there should be a better way to learn about them.</p>
-        
-        <div class="mission-vision">
-            <div class="mission">
-                <h2>Our Mission</h2>
-                <p>To make cultural and historical knowledge accessible to everyone, anywhere, breaking down language barriers and enhancing the travel experience through the power of artificial intelligence.</p>
-            </div>
-            <div class="vision">
-                <h2>Our Vision</h2>
-                <p>A world where every traveler can deeply connect with the places they visit, understanding their significance and stories regardless of language or prior knowledge.</p>
-            </div>
+        <p class="subtitle">Revolutionizing travel through artificial intelligence</p>
+    </div>
+
+    <div class="about-content">
+        <div class="section">
+            <p class="intro-text">VisitAI was born from a classic tourist moment: standing in the Vatican in March 2025, surrounded by breathtaking architecture, and having absolutely no idea what I was looking at. That's when the lightbulb went off (brighter than the Sistine Chapel ceiling, some might say). What if your smartphone could be your personal art history professor? Four months later, boom - VisitAI was born!</p>
         </div>
         
-        <h2>Our Story</h2>
-        
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>April 2025</h3>
-                    <p>The idea for VisitAI was conceived after a vacation in Rome when the founder wished for a better way to learn about the historical buildings he was seeing.</p>
+        <div class="section">
+            <div class="mission-vision">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To make cultural and historical knowledge accessible to everyone, anywhere, breaking down language barriers and enhancing the travel experience through the power of artificial intelligence.</p>
                 </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h3>Late April 2025</h3>
-                    <p>Development began working on the first prototype of the mobile app, focusing on building recognition capabilities.</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>Late April 2025</h3>
-                    <p>The first version of VisitAI was completed with basic building recognition and information features.</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h3>Early May 2025</h3>
-                    <p>Multilingual support was added, expanding the app's capabilities to serve international travelers.</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h3>June 2025</h3>
-                    <p>VisitAI launched publicly, making it available to travelers, educators, and history enthusiasts around the world.</p>
+                <div class="vision-card">
+                    <h3>Our Vision</h3>
+                    <p>A world where every traveler can deeply connect with the places they visit, understanding their significance and stories regardless of language or prior knowledge.</p>
                 </div>
             </div>
         </div>
         
-        <h2>Our Team</h2>
-        <p>VisitAI is the creation of a single passionate developer with a love for travel, history, and technology.(for now)</p>
-        
-        <div class="team-section">
-            <div class="team-member">
-                <div class="avatar">
-                    <img src="assets/ceo.png" alt="Samuel Nistor" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+        <div class="section">
+            <h2>Our Story</h2>
+            
+                        <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>March 2025 🏛️</h3>
+                        <p>Standing in the Vatican, staring at magnificent architecture, and having absolutely no clue what I was looking at. That awkward moment when you realize Google isn't helping and tour guides cost more than your flight. "There has to be a better way!" - famous last words before starting a tech project.</p>
+                    </div>
                 </div>
-                <h3>Samuel Nistor</h3>
-                <p>Founder & CEO</p>
-                <p>Developer and entrepreneur with a passion for making history accessible through technology.</p>
-                <p><a href="https://www.linkedin.com/in/samuel-nistor" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a></p>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Late March 2025 🎨</h3>
+                        <p>Two weeks of pure UI magic! ✨ Designing screens, picking colors, and making buttons look so good they could win beauty contests. The prototype was so beautiful it gave me the energy of a thousand espressos. "This might actually work!" - first sign of dangerous optimism.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Early April 2025 ⚙️</h3>
+                        <p>Time to make the magic happen! Backend development, APIs, and the joy of making computers talk to each other. Spoiler alert: they weren't very chatty at first. Coffee consumption reached levels that would concern a doctor.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>End of April 2025 🐛</h3>
+                        <p>First working version achieved! 🎉 Sure, it had more bugs than a summer picnic, but it WORKED! Buildings were getting recognized (sometimes correctly), and I felt like a tech wizard. Bugs included: app crashes, wrong buildings, and occasionally identifying my coffee mug as the Colosseum.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>May 2025 🔧</h3>
+                        <p>The month of "Wait, why is it doing that?" Bug hunting season was officially open! Fixed crashes, improved accuracy, and added payment methods. Turns out people want to pay for apps that actually work - who knew? 💰</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Late June 2025 🚀</h3>
+                        <p>Launch day! VisitAI went live and ready to help confused tourists worldwide. First app ever built, definitely not the last. Turns out this whole "building apps" thing is pretty addictive. Plot twist: I actually enjoyed the journey! 🎯</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <h2>Our Technology</h2>
-        <p>VisitAI leverages cutting-edge AI technologies to deliver accurate information about buildings and landmarks:</p>
-        <ul>
-            <li><strong>Advanced Computer Vision:</strong> Our proprietary image recognition system can identify buildings from various angles and in different lighting conditions.</li>
-            <li><strong>Natural Language Processing:</strong> We generate natural-sounding descriptions that are informative yet concise.</li>
-            <li><strong>High-Quality Text-to-Speech:</strong> Our app converts text to speech in multiple languages with natural-sounding voices.</li>
-            <li><strong>Location Intelligence:</strong> We use your location data (with permission) to narrow down possible matches and provide more accurate results.</li>
-        </ul>
+        <div class="section">
+            <h2>Our Team</h2>
+            <p class="intro-text">VisitAI is the creation of a single passionate developer with a love for travel, history, and technology (for now).</p>
+            
+            <div class="team-section">
+                <div class="team-member">
+                    <div class="avatar">
+                        <img src="assets/ceo.png" alt="Samuel Nistor">
+                    </div>
+                    <h3>Samuel Nistor</h3>
+                    <p class="role">Founder & CEO</p>
+                    <p class="description">Developer and entrepreneur with a passion for making history accessible through technology.</p>
+                    <a href="https://www.linkedin.com/in/samuel-nistor" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
         
-        <h2>Our Commitment</h2>
-        <p>At VisitAI, we're committed to:</p>
-        <ul>
-            <li><strong>Accuracy:</strong> We work with historians and local experts to ensure the information we provide is accurate and culturally sensitive.</li>
-            <li><strong>Accessibility:</strong> We believe everyone should have access to knowledge about our shared cultural heritage.</li>
-            <li><strong>Privacy:</strong> We respect your data privacy and only collect information necessary to provide our services.</li>
-            <li><strong>Continuous Improvement:</strong> We're constantly expanding our database and improving our AI to recognize more buildings and provide better information.</li>
-        </ul>
+        <div class="section">
+            <h2>Our Technology</h2>
+            <p class="intro-text">VisitAI leverages cutting-edge AI technologies to deliver accurate information about buildings and landmarks</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Advanced Computer Vision</h4>
+                    <p>Our proprietary image recognition system can identify buildings from various angles and in different lighting conditions.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Natural Language Processing</h4>
+                    <p>We generate natural-sounding descriptions that are informative yet concise.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>High-Quality Text-to-Speech</h4>
+                    <p>Our app converts text to speech in multiple languages with natural-sounding voices.</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Location Intelligence</h4>
+                    <p>We use your location data (with permission) to narrow down possible matches and provide more accurate results.</p>
+                </div>
+            </div>
+        </div>
         
-        <h2>Join Us on This Journey</h2>
-        <p>We're just getting started on this mission to transform how people explore and learn about the world. Whether you're a casual traveler, a history buff, or an educator, we invite you to download VisitAI and experience a new way of discovering the stories behind the buildings around you.</p>
+        <div class="section">
+            <h2>Our Commitment</h2>
+            
+            <div class="commitment-grid">
+                <div class="commitment-item">
+                    <h4>Accuracy</h4>
+                    <p>We work with historians and local experts to ensure the information we provide is accurate and culturally sensitive.</p>
+                </div>
+                <div class="commitment-item">
+                    <h4>Accessibility</h4>
+                    <p>We believe everyone should have access to knowledge about our shared cultural heritage.</p>
+                </div>
+                <div class="commitment-item">
+                    <h4>Privacy</h4>
+                    <p>We respect your data privacy and only collect information necessary to provide our services.</p>
+                </div>
+                <div class="commitment-item">
+                    <h4>Continuous Improvement</h4>
+                    <p>We're constantly expanding our database and improving our AI to recognize more buildings and provide better information.</p>
+                </div>
+            </div>
+        </div>
         
-        <p>Have suggestions for improving VisitAI? We'd love to hear from you! Contact us at <a href="mailto:support@visitai.eu">support@visitai.eu</a>.</p>
-        
-        <p>While VisitAI is currently self-funded, we're open to discussions about potential partnerships or investment opportunities to help grow and improve the app.</p>
-        
-        <a href="index.html" class="back-to-home">← Back to Home</a>
+        <div class="cta-section">
+            <h2>Join Us on This Journey</h2>
+            <p>We're just getting started on this mission to transform how people explore and learn about the world. Whether you're a casual traveler, a history buff, or an educator, we invite you to download VisitAI and experience a new way of discovering the stories behind the buildings around you.</p>
+            
+            <p>Have suggestions for improving VisitAI? We'd love to hear from you! Contact us at <a href="mailto:support@visitai.eu" style="color: white; text-decoration: underline;">support@visitai.eu</a>.</p>
+            
+            <p>While VisitAI is currently self-funded, we're open to discussions about potential partnerships or investment opportunities to help grow and improve the app.</p>
+            
+            <a href="index.html" class="back-to-home">← Back to Home</a>
+        </div>
     </div>
 
     <footer>
