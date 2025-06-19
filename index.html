@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -33,31 +33,13 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Who needs a guide when you have <span class="highlight">VisitAI</span>?</h1>
-            <p>Your AI-powered travel companion that recognizes historical buildings and provides instant, multilingual descriptions.</p>
-            <div class="cta-buttons">
-                <a href="#download" class="btn primary">Download Now</a>
-                <a href="#how-it-works" class="btn secondary">Learn More</a>
-            </div>
-        </div>
-        
-        <!-- Center container for floating icons -->
-        <div class="icons-container">
-            <!-- Floating icons scattered in the center -->
-            <div class="floating-icon" title="Building Recognition"><i class="fas fa-camera"></i></div>
-            <div class="floating-icon" title="Multilingual Support"><i class="fas fa-language"></i></div>
-            <div class="floating-icon" title="Travel Planning"><i class="fas fa-map-marked-alt"></i></div>
-            <div class="floating-icon" title="Natural Voice"><i class="fas fa-volume-up"></i></div>
-            <div class="floating-icon" title="Historical Facts"><i class="fas fa-history"></i></div>
-            <div class="floating-icon" title="Worldwide Coverage"><i class="fas fa-globe"></i></div>
-        </div>
-        
-        <div class="hero-image">
-            <div class="phone-container">
-                <img src="assets/image1.png" alt="VisitAI App Screenshot">
-            </div>
+    <!-- New Video Hero Section -->
+    <section class="video-hero">
+        <div class="video-container">
+            <video id="hero-video" autoplay muted playsinline>
+                <source src="assets/video.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
@@ -276,5 +258,39 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Debug video playback
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('hero-video');
+            
+            if (video) {
+                // Log video events for debugging
+                const events = [
+                    'loadstart', 'progress', 'suspend', 'abort', 'error',
+                    'emptied', 'stalled', 'loadedmetadata', 'loadeddata',
+                    'canplay', 'canplaythrough', 'playing', 'waiting',
+                    'seeking', 'seeked', 'ended', 'durationchange',
+                    'timeupdate', 'play', 'pause', 'ratechange', 'volumechange'
+                ];
+
+                events.forEach(event => {
+                    video.addEventListener(event, (e) => {
+                        console.log(`Video ${event} event fired`);
+                    });
+                });
+
+                // Try to play the video programmatically
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.error("Video play failed:", error);
+                    });
+                }
+            } else {
+                console.error("Video element not found");
+            }
+        });
+    </script>
 </body>
 </html>

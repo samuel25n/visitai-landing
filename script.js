@@ -1,7 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const heroVideo = document.getElementById("hero-video");
+    const heroSection = document.querySelector(".video-hero");
+
+    let wasOutOfView = false;
+
+    if (!heroVideo || !heroSection) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                // When it leaves the view completely
+                if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+                    wasOutOfView = true;
+                }
+
+                // When it comes back into view and was previously out
+                if (entry.isIntersecting && wasOutOfView) {
+                    heroVideo.currentTime = 0;
+                    heroVideo.play();
+                    wasOutOfView = false;
+                }
+            });
+        },
+        {
+            threshold: [0, 0.5, 1.0], // Catch full enter/exit events
+        }
+    );
+
+    observer.observe(heroSection);
+    
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links li');
     
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
@@ -89,15 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Header scroll effect
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.boxShadow = 'none';
-        }
-    });
+    // Header scroll effect is now handled by the earlier scroll event listener
     
     // Reveal animations on scroll
     const revealElements = document.querySelectorAll('.feature-card, .step, .language-item');
