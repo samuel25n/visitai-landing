@@ -1,9 +1,7 @@
 User-agent: *
 Allow: /
 
-# Disallow certain file types that shouldn't be indexed
-Disallow: /*.js$
-Disallow: /*.css$
+# Disallow large media files only
 Disallow: /*.mov$
 Disallow: /*.mp4$
 

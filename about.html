@@ -372,7 +372,7 @@
         
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin: 60px 0;
         }
@@ -458,12 +458,14 @@
         }
         
         .cta-section {
-            background: linear-gradient(135deg, #2E9E97 0%, #4ECDC4 100%);
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(184, 240, 237, 0.15) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78, 205, 196, 0.2);
             padding: 60px 40px;
             border-radius: 20px;
             text-align: center;
             margin: 80px 0;
-            color: white;
+            color: #1a202c;
             position: relative;
             overflow: hidden;
         }
@@ -475,41 +477,41 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 70%, rgba(78, 205, 196, 0.05) 0%, transparent 50%);
             pointer-events: none;
         }
         
         .cta-section h2 {
-            color: white;
+            color: #1a202c;
             margin-bottom: 20px;
         }
         
         .cta-section h2::after {
-            background: white;
+            background: linear-gradient(90deg, #4ECDC4, #2E9E97);
         }
         
         .cta-section p {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            opacity: 0.9;
+            color: #64748b;
         }
         
         .back-to-home {
             display: inline-block;
-            background: white;
-            color: #2E9E97;
+            background: linear-gradient(135deg, #4ECDC4, #2E9E97);
+            color: white;
             padding: 15px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(78, 205, 196, 0.3);
         }
         
         .back-to-home:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background: #f8f9fa;
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
+            background: linear-gradient(135deg, #2E9E97, #4ECDC4);
         }
         
         @keyframes slideInDown {
@@ -625,12 +627,27 @@
                 font-size: 2rem;
             }
             
-            .tech-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .commitment-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
+    <!-- ADD_ABOUT_BREADCRUMB_JSONLD_START -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem","position": 1,"name": "Home","item": "https://visitai.app"},
+        {"@type": "ListItem","position": 2,"name": "About Us","item": "https://visitai.app/about.html"}
+      ]
+    }
+    </script>
+    <!-- ADD_ABOUT_BREADCRUMB_JSONLD_END -->
 </head>
 <body>
     <header>
@@ -790,7 +807,7 @@
             <h2>Join Us on This Journey</h2>
             <p>We're just getting started on this mission to transform how people explore and learn about the world. Whether you're a casual traveler, a history buff, or an educator, we invite you to download VisitAI and experience a new way of discovering the stories behind the buildings around you.</p>
             
-            <p>Have suggestions for improving VisitAI? We'd love to hear from you! Contact us at <a href="mailto:support@visitai.eu" style="color: white; text-decoration: underline;">support@visitai.eu</a>.</p>
+            <p>Have suggestions for improving VisitAI? We'd love to hear from you! Contact us at <a href="mailto:support@visitai.eu" style="color: #2E9E97; text-decoration: underline; font-weight: 600;">support@visitai.eu</a>.</p>
             
             <p>While VisitAI is currently self-funded, we're open to discussions about potential partnerships or investment opportunities to help grow and improve the app.</p>
             

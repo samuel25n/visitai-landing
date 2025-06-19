@@ -47,6 +47,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ADD_PRELOAD_FONTS_START -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+    <!-- ADD_PRELOAD_FONTS_END -->
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -393,5 +397,79 @@
             }
         });
     </script>
+    <!-- ADD_BREADCRUMB_FAQ_JSONLD_START -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://visitai.app"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is VisitAI?",
+          "acceptedAnswer": {"@type": "Answer","text": "VisitAI is an AI-powered travel guide app that instantly identifies historical buildings and provides multilingual audio/text descriptions."}
+        },
+        {
+          "@type": "Question",
+          "name": "How does VisitAI identify buildings?",
+          "acceptedAnswer": {"@type": "Answer","text": "Our proprietary computer-vision model compares the image against a global landmark database and returns the best match in real-time."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is VisitAI free to use?",
+          "acceptedAnswer": {"@type": "Answer","text": "The core features are free. A premium tier unlocks unlimited identifications and offline packs."}
+        },
+        {
+          "@type": "Question",
+          "name": "Which languages are supported?",
+          "acceptedAnswer": {"@type": "Answer","text": "VisitAI currently supports English, Spanish, French, Italian, German, Russian, Arabic and Romanian."}
+        },
+        {
+          "@type": "Question",
+          "name": "Will VisitAI work offline?",
+          "acceptedAnswer": {"@type": "Answer","text": "Yes. You can download city packs in advance so landmark recognition works without internet."}
+        }
+      ]
+    }
+    </script>
+    <!-- ADD_BREADCRUMB_FAQ_JSONLD_END -->
+    <!-- ADD_FAQ_SECTION_START -->
+    <section id="faq" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What is VisitAI?</h3>
+            <p>VisitAI is an AI-powered travel guide that recognises landmarks and tells you their stories in your chosen language.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does VisitAI identify buildings?</h3>
+            <p>Our computer-vision engine compares your photo with a global landmark database and returns the best match in real-time.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is VisitAI free?</h3>
+            <p>Core features are free. Upgrade to premium for limitless identifications and offline city packs.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Which languages are supported?</h3>
+            <p>English, Spanish, French, Italian, German, Russian, Arabic and Romanian.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Will VisitAI work offline?</h3>
+            <p>Yes – download a city pack before you travel and identify landmarks without network.</p>
+        </div>
+    </section>
+    <!-- ADD_FAQ_SECTION_END -->
 </body>
 </html>
