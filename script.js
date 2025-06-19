@@ -6,15 +6,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!heroVideo || !heroSection) return;
 
+    function switchVideoSource() {
+        const isMobile = window.innerWidth <= 768;
+        const desktopSource = document.getElementById("video-desktop");
+        const mobileSource = document.getElementById("video-mobile");
+        
+        if (isMobile && mobileSource) {
+            heroVideo.src = mobileSource.src;
+        } else if (!isMobile && desktopSource) {
+            heroVideo.src = desktopSource.src;
+        }
+        
+        heroVideo.load();
+        heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+    }
+
+    switchVideoSource();
+
+    window.addEventListener('resize', switchVideoSource);
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                // When it leaves the view completely
                 if (!entry.isIntersecting && entry.intersectionRatio === 0) {
                     wasOutOfView = true;
                 }
 
-                // When it comes back into view and was previously out
                 if (entry.isIntersecting && wasOutOfView) {
                     heroVideo.currentTime = 0;
                     heroVideo.play();
@@ -23,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         },
         {
-            threshold: [0, 0.5, 1.0], // Catch full enter/exit events
+            threshold: [0, 0.5, 1.0],
         }
     );
 

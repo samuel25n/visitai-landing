@@ -37,7 +37,8 @@
     <section class="video-hero">
         <div class="video-container">
             <video id="hero-video" autoplay muted playsinline>
-                <source src="assets/video.mov" type="video/mp4">
+                <source id="video-desktop" src="assets/video.mov" type="video/mp4" media="(min-width: 769px)">
+                <source id="video-mobile" src="assets/video2.mov" type="video/mp4" media="(max-width: 768px)">
                 Your browser does not support the video tag.
             </video>
         </div>
