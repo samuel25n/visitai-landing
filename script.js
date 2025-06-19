@@ -28,17 +28,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                // Only consider it "out of view" when it's completely invisible
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    return;
+                }
                 if (!entry.isIntersecting && entry.intersectionRatio === 0) {
-                    // Add a small delay to prevent immediate triggering on small scrolls
                     setTimeout(() => {
                         if (!entry.isIntersecting) {
                             wasOutOfView = true;
                         }
                     }, 500);
                 }
-
-                // Only restart when coming back into view AND was previously completely out
                 if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
                     heroVideo.currentTime = 0;
                     heroVideo.play();
