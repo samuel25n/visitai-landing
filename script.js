@@ -6,53 +6,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!heroVideo || !heroSection) return;
 
+    let currentVideoSrc = '';
+
     function switchVideoSource() {
         const isMobile = window.innerWidth < window.innerHeight;
         const desktopSource = document.getElementById("video-desktop");
         const mobileSource = document.getElementById("video-mobile");
         
+        let newSrc = '';
         if (isMobile && mobileSource) {
-            heroVideo.src = mobileSource.src;
+            newSrc = mobileSource.src;
         } else if (!isMobile && desktopSource) {
-            heroVideo.src = desktopSource.src;
+            newSrc = desktopSource.src;
         }
         
-        heroVideo.load();
-        heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+        // Only change video if the source is actually different
+        if (newSrc && newSrc !== currentVideoSrc) {
+            currentVideoSrc = newSrc;
+            heroVideo.src = newSrc;
+            heroVideo.load();
+            heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+        }
     }
 
     switchVideoSource();
 
-    window.addEventListener('resize', switchVideoSource);
+    // Add debouncing to prevent excessive calls during resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(switchVideoSource, 250);
+    });
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                const isMobile = window.innerWidth < window.innerHeight;
-                if (isMobile) {
-                    return;
-                }
-                if (!entry.isIntersecting && entry.intersectionRatio === 0) {
-                    setTimeout(() => {
-                        if (!entry.isIntersecting) {
-                            wasOutOfView = true;
-                        }
-                    }, 500);
-                }
-                if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
-                    heroVideo.currentTime = 0;
-                    heroVideo.play();
-                    wasOutOfView = false;
-                }
-            });
-        },
-        {
-            threshold: [0, 0.1, 0.5, 1.0],
-            rootMargin: '-50px 0px -50px 0px'
-        }
-    );
+    // Only set up intersection observer for desktop devices
+    const initialIsMobile = window.innerWidth < window.innerHeight;
+    
+    if (!initialIsMobile) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    // Double check we're still on desktop
+                    const isMobile = window.innerWidth < window.innerHeight;
+                    if (isMobile) {
+                        return;
+                    }
+                    
+                    if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+                        setTimeout(() => {
+                            if (!entry.isIntersecting) {
+                                wasOutOfView = true;
+                            }
+                        }, 500);
+                    }
+                    if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
+                        heroVideo.currentTime = 0;
+                        heroVideo.play();
+                        wasOutOfView = false;
+                    }
+                });
+            },
+            {
+                threshold: [0, 0.1, 0.5, 1.0],
+                rootMargin: '-50px 0px -50px 0px'
+            }
+        );
 
-    observer.observe(heroSection);
+        observer.observe(heroSection);
+    }
     
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
