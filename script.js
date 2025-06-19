@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!heroVideo || !heroSection) return;
 
     let currentVideoSrc = '';
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
     function switchVideoSource() {
         const isMobile = window.innerWidth < window.innerHeight;
@@ -25,6 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
             currentVideoSrc = newSrc;
             heroVideo.src = newSrc;
             heroVideo.load();
+            
+            // Safari on mobile needs special handling
+            if (isMobile && isSafari) {
+                // Don't force play on Safari mobile, let it handle naturally
+                return;
+            }
+            
             heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
         }
     }
@@ -32,16 +40,19 @@ document.addEventListener("DOMContentLoaded", function () {
     switchVideoSource();
 
     // Add debouncing to prevent excessive calls during resize
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(switchVideoSource, 250);
-    });
+    // Disable resize listener on Safari mobile to prevent video restarts
+    if (!(window.innerWidth < window.innerHeight && isSafari)) {
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(switchVideoSource, 250);
+        });
+    }
 
-    // Only set up intersection observer for desktop devices
+    // Only set up intersection observer for desktop devices (and not Safari mobile)
     const initialIsMobile = window.innerWidth < window.innerHeight;
     
-    if (!initialIsMobile) {
+    if (!initialIsMobile && !(initialIsMobile && isSafari)) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
