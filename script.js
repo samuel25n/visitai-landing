@@ -4,87 +4,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let wasOutOfView = false;
 
-    if (!heroVideo || !heroSection) return;
+    if (heroVideo && heroSection) {
+        let currentVideoSrc = '';
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    let currentVideoSrc = '';
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    function switchVideoSource() {
-        const isMobile = window.innerWidth < window.innerHeight;
-        const desktopSource = document.getElementById("video-desktop");
-        const mobileSource = document.getElementById("video-mobile");
-        
-        let newSrc = '';
-        if (isMobile && mobileSource) {
-            newSrc = mobileSource.src;
-        } else if (!isMobile && desktopSource) {
-            newSrc = desktopSource.src;
-        }
-        
-        // Only change video if the source is actually different
-        if (newSrc && newSrc !== currentVideoSrc) {
-            currentVideoSrc = newSrc;
-            heroVideo.src = newSrc;
-            heroVideo.load();
+        function switchVideoSource() {
+            const isMobile = window.innerWidth < window.innerHeight;
+            const desktopSource = document.getElementById("video-desktop");
+            const mobileSource = document.getElementById("video-mobile");
             
-            // Safari on mobile needs special handling
-            if (isMobile && isSafari) {
-                // Don't force play on Safari mobile, let it handle naturally
-                return;
+            let newSrc = '';
+            if (isMobile && mobileSource) {
+                newSrc = mobileSource.src;
+            } else if (!isMobile && desktopSource) {
+                newSrc = desktopSource.src;
             }
             
-            heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+            // Only change video if the source is actually different
+            if (newSrc && newSrc !== currentVideoSrc) {
+                currentVideoSrc = newSrc;
+                heroVideo.src = newSrc;
+                heroVideo.load();
+                
+                // Safari on mobile needs special handling
+                if (isMobile && isSafari) {
+                    // Don't force play on Safari mobile, let it handle naturally
+                    return;
+                }
+                
+                heroVideo.play().catch(e => console.log("Video autoplay prevented:", e));
+            }
+        }
+
+        switchVideoSource();
+
+        // Add debouncing to prevent excessive calls during resize
+        // Disable resize listener on Safari mobile to prevent video restarts
+        if (!(window.innerWidth < window.innerHeight && isSafari)) {
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(switchVideoSource, 250);
+            });
+        }
+
+        // Only set up intersection observer for desktop devices (and not Safari mobile)
+        const initialIsMobile = window.innerWidth < window.innerHeight;
+        
+        if (!initialIsMobile && !(initialIsMobile && isSafari)) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        // Double check we're still on desktop
+                        const isMobile = window.innerWidth < window.innerHeight;
+                        if (isMobile) {
+                            return;
+                        }
+                        
+                        if (!entry.isIntersecting && entry.intersectionRatio === 0) {
+                            setTimeout(() => {
+                                if (!entry.isIntersecting) {
+                                    wasOutOfView = true;
+                                }
+                            }, 500);
+                        }
+                        if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
+                            heroVideo.currentTime = 0;
+                            heroVideo.play();
+                            wasOutOfView = false;
+                        }
+                    });
+                },
+                {
+                    threshold: [0, 0.1, 0.5, 1.0],
+                    rootMargin: '-50px 0px -50px 0px'
+                }
+            );
+
+            observer.observe(heroSection);
         }
     }
-
-    switchVideoSource();
-
-    // Add debouncing to prevent excessive calls during resize
-    // Disable resize listener on Safari mobile to prevent video restarts
-    if (!(window.innerWidth < window.innerHeight && isSafari)) {
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(switchVideoSource, 250);
-        });
-    }
-
-    // Only set up intersection observer for desktop devices (and not Safari mobile)
-    const initialIsMobile = window.innerWidth < window.innerHeight;
-    
-    if (!initialIsMobile && !(initialIsMobile && isSafari)) {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    // Double check we're still on desktop
-                    const isMobile = window.innerWidth < window.innerHeight;
-                    if (isMobile) {
-                        return;
-                    }
-                    
-                    if (!entry.isIntersecting && entry.intersectionRatio === 0) {
-                        setTimeout(() => {
-                            if (!entry.isIntersecting) {
-                                wasOutOfView = true;
-                            }
-                        }, 500);
-                    }
-                    if (entry.isIntersecting && wasOutOfView && entry.intersectionRatio > 0.1) {
-                        heroVideo.currentTime = 0;
-                        heroVideo.play();
-                        wasOutOfView = false;
-                    }
-                });
-            },
-            {
-                threshold: [0, 0.1, 0.5, 1.0],
-                rootMargin: '-50px 0px -50px 0px'
-            }
-        );
-
-        observer.observe(heroSection);
-    }
-    
+        
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -106,57 +106,59 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Testimonial Slider
     const testimonials = document.querySelectorAll('.testimonial');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentSlide = 0;
-    
-    // Hide all testimonials except the first one
-    function hideAllTestimonials() {
-        testimonials.forEach(testimonial => {
-            testimonial.style.display = 'none';
-        });
-    }
-    
-    // Show the current testimonial
-    function showTestimonial(index) {
-        hideAllTestimonials();
-        testimonials[index].style.display = 'block';
+    if (testimonials.length) {
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
         
-        // Update dots
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-    }
-    
-    // Initialize slider
-    hideAllTestimonials();
-    showTestimonial(currentSlide);
-    
-    // Next button click
-    nextBtn.addEventListener('click', function() {
-        currentSlide = (currentSlide + 1) % testimonials.length;
+        function hideAllTestimonials() {
+            testimonials.forEach(testimonial => {
+                testimonial.style.display = 'none';
+            });
+        }
+        
+        // Show the current testimonial
+        function showTestimonial(index) {
+            hideAllTestimonials();
+            testimonials[index].style.display = 'block';
+            
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+        }
+        
+        // Initialize slider
+        hideAllTestimonials();
         showTestimonial(currentSlide);
-    });
-    
-    // Previous button click
-    prevBtn.addEventListener('click', function() {
-        currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(currentSlide);
-    });
-    
-    // Dot clicks
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', function() {
-            currentSlide = index;
-            showTestimonial(currentSlide);
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                currentSlide = (currentSlide + 1) % testimonials.length;
+                showTestimonial(currentSlide);
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() {
+                currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentSlide);
+            });
+        }
+        
+        // Dot clicks
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                currentSlide = index;
+                showTestimonial(currentSlide);
+            });
         });
-    });
-    
-    // Auto slide every 5 seconds
-    setInterval(function() {
-        currentSlide = (currentSlide + 1) % testimonials.length;
-        showTestimonial(currentSlide);
-    }, 5000);
+        
+        setInterval(function() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            showTestimonial(currentSlide);
+        }, 5000);
+    }
     
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
